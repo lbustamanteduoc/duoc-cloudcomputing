@@ -47,6 +47,6 @@ echo -n "10. juanito con grupo principal duocsb: "
 
 # Verificar archivo creado por juanito
 echo -n "11. Archivo text2.txt creado: "
-[ -f /home/duoclinux/text2.txt ] && echo "✅" || echo "❌"
+[ -f /home/juanito/text2.txt ] && echo "✅" || echo "❌"
 
 echo "✅ Verificación finalizada."
