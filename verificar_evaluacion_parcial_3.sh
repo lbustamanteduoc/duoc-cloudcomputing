@@ -6,17 +6,19 @@
 echo "===== Registro del Estudiante ====="
 read -p "👤 Ingrese su nombre completo: " nombre
 read -p "📅 Ingrese la fecha de hoy (YYYY-MM-DD): " fecha
-read -p "🧸 Ingrese el nombre de su personaje favorito de su infancia (una palabra): " personaje
+read -p "🧝 Ingrese una frase de 5 palabras relacionada con Game of Thrones: " frase
 
-if [[ -z "$personaje" ]]; then
-  echo "❌ Debe ingresar al menos una palabra. Intente nuevamente."
+palabras=$(echo "$frase" | wc -w)
+
+if [ "$palabras" -ne 5 ]; then
+  echo "❌ La frase debe contener exactamente 5 palabras. Intente nuevamente."
   exit 1
 fi
 
 echo ""
 echo "📋 Estudiante: $nombre"
-echo "🕒 Fecha de ejecución (UTC): $(date -u)"
-echo "🧙 Personaje favorito: "$personaje""
+echo "🕒 Fecha de ejecución: $fecha (UTC)"
+echo "🧙 Frase: \"$frase\""
 echo "===================================="
 sleep 2
 
@@ -69,7 +71,7 @@ else
   echo "❌ Archivo misdatos.txt no existe."
 fi
 
-# Parte 4: Cron funcionando (espera 65 segundos)
+# Parte 4: Cron funcionando (espera 1 minuto)
 echo -e "\n4. Verificando cron y mensaje.txt (esperando 65 segundos)..."
 sleep 65
 if grep -q "Hola, este es un msj automático" /respaldos/documentos/mensaje.txt; then
@@ -81,7 +83,7 @@ fi
 
 # Parte 5: Script remoto descargado
 echo -e "\n5. Verificando script remoto..."
-if [ -x "/respaldos/documentos/ev_formativa_2.sh" ]; then
+if [ -x "/respaldos/documentos/verificar_evaluacion_parcial_3.sh" ]; then
   echo "✅ Script descargado y tiene permisos de ejecución."
   total=$((total + 20))
 else
